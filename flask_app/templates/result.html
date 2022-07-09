@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
+    <title>Results</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container py-5 mb-4 bg-light rounded-3 ">
+            <div class="p-5 mb-4 lc-block">
+                <div class="lc-block">
+                    <div editable="rich">
+                        <h2 class="fw-bolder display-3">Submitted Info:</h2>
+                    </div>
+                </div>
+                <div class="lc-block col-md-12">
+                    <div editable="rich">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Name</th>
+                                    <td>{{ dojo.name }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Location</th>
+                                    <td>{{ dojo.location }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Language</th>
+                                    <td>{{ dojo.language }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Comments</th>
+                                    <td>{{ dojo.comment }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="lc-block d-grid gap-2 d-sm-flex justify-content-sm-left">
+                            <a class="btn btn-primary btn-lg px-4 gap-3 btn-warning" href="/index" role="button">Go Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
