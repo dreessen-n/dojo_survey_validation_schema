@@ -1,5 +1,8 @@
+# models.dojo
 # Import mysqlconnection config
 from flask_app.config.mysqlconnection import connectToMySQL
+# Import the flash 
+from flask import flash
 
 """
 Import other models files for access to classes.
@@ -31,3 +34,20 @@ class Dojo:
         results = connectToMySQL('dojo_survey_validation_schema').query_db(query,data)
         return cls(results[0])
         
+    @staticmethod
+    def validate_dojo(dojo):
+        """Validate the add a dojo form"""
+        is_valid = True # We assume this is true
+        if len(dojo['name']) < 3:
+            flash("The Name must be at least 3 characters.")
+            is_valid = False
+        if len(dojo['location']) < 3:
+            flash("The Name must be at least 3 characters.")
+            is_valid = False
+        if len(dojo['language']) < 3:
+            flash("The Name must be at least 3 characters.")
+            is_valid = False
+        if len(dojo['comment']) < 3:
+            flash("The Comment must be at least 3 characters.")
+            is_valid = False
+        return is_valid

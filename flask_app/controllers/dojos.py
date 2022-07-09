@@ -1,3 +1,4 @@
+# controllers.dojos
 # Import app
 from flask_app import app
 # Import modules from flask
@@ -14,9 +15,15 @@ def index():
     """POST input"""
     return render_template('index.html')
 
-@app.route('/process_data',methods=['POST'])
+@app.route('/process_data', methods=['POST'])
 def process_data():
     """Write values to db"""
+    # check for errors
+    # Call the staticmethod on Dojo model to validate
+    if not dojo.Dojo.validate_dojo(request.form):
+        # redirect back to form if return is False
+        return redirect('/')
+    # If returns True continue
     data = {
         'name': request.form['name'],
         'location': request.form['location'],
